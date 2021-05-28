@@ -66,10 +66,33 @@ public class Books
      * Finds a book based on Id
      * should refactor to find on name
      */
-    public void findBook(){
-        int bookId = UI.askInt("Id: ");   //Finds book on ID - change to title
-        UI.println(booksMap.get(bookId).getName());  // prints book name
-        booksMap.get(bookId).displayBook();   // shows book cover on canvas
+    //public void findBook(){
+        //int bookId = UI.askInt("Id: ");   //Finds book on ID - change to title
+        //UI.println(booksMap.get(bookId).getName());  // prints book name
+        //booksMap.get(bookId).displayBook();   // shows book cover on canvas
+    //}
+    
+    /**
+     * Uses book name to find details
+     */
+    public void findBook(String bookName){
+        //int bookId = UI.askInt("Id: ");   //Finds book on ID - change to title
+        //bookName = UI.askString("Name: ");   // Ask user book name // Dont need this since the text field does the asking
+        
+        // Loop and return values 
+        for (int bookId : booksMap.keySet()){
+            if (bookName.equalsIgnoreCase(booksMap.get(bookId).getName())){
+                UI.drawString("Book ID " + bookId + ": ", 50, 100);
+                UI.drawString("Name: " + booksMap.get(bookId).getName(), 50, 120); 
+                UI.drawString("Author: " + booksMap.get(bookId).getAuthor(), 50, 140);
+                UI.drawString("Quantity in Store: " + booksMap.get(bookId).getQuantity(), 50, 160);
+            }
+            
+            //UI.println(booksMap.get(bookId).getName());  // prints book name
+            //booksMap.get(bookId).displayBook();   // shows book cover on canvas
+        }
+        
+        
     }
     
     /**
@@ -88,33 +111,33 @@ public class Books
     /**
      * Menu to print and call appropriate methods
      */
-    public void menu() {
-        // Print menu and force choice
-        String choice; 
+    // public void menu() {
+        // // Print menu and force choice
+        // String choice; 
         
-        do {
-            UI.println("(A)dd a book");
-            UI.println("(F)ind a book");
-            UI.println("(P)rint all");
-            UI.println("(Q)uit");
+        // do {
+            // UI.println("(A)dd a book");
+            // UI.println("(F)ind a book");
+            // UI.println("(P)rint all");
+            // UI.println("(Q)uit");
             
-            choice = UI.askString("Enter a choice");
+            // choice = UI.askString("Enter a choice");
             
-            if (choice.equalsIgnoreCase("A")){
-                addBook();
-            } else if (choice.equalsIgnoreCase("F")){
-                findBook();
-            } else if (choice.equalsIgnoreCase("P")){
-                printAll();
-            } else if (choice.equalsIgnoreCase("Q")) {
-                UI.println("Goodbye");
-                UI.quit();
-            } else {
-                UI.println("Thats not a choice idiot");
-            }
-        } while (!choice.equalsIgnoreCase("Q"));
+            // if (choice.equalsIgnoreCase("A")){
+                // addBook();
+            // } else if (choice.equalsIgnoreCase("F")){
+                // findBook();
+            // } else if (choice.equalsIgnoreCase("P")){
+                // printAll();
+            // } else if (choice.equalsIgnoreCase("Q")) {
+                // UI.println("Goodbye");
+                // UI.quit();
+            // } else {
+                // UI.println("Thats not a choice idiot");
+            // }
+        // } while (!choice.equalsIgnoreCase("Q"));
         
         
        
-    }
+    // }
 }
